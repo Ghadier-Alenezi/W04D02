@@ -12,13 +12,11 @@ const Todo = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const todo = {
-      id: this.state.todos.length + 1,
+      id: todos.length + 1,
       name: e.target.task.value,
     };
-    if (e.target.task.value) {
-      setTodos([...todos, todo]);
-      e.target.task.value = "";
-    }
+    setTodos([...todos, todo]);
+    e.target.task.value = "";
   };
 
   //delete
@@ -35,12 +33,11 @@ const Todo = () => {
         <button>Add Task</button>
       </form>
       <ul>
-        {todos.map((todo, i) => (
-          <TodoItem todo={todo} key={i} handleDelete={handleDelete} />
-        ))}
+        {todos.map((todo, i) => {
+          return <TodoItem todo={todo} key={i} handleDelete={handleDelete} />;
+        })}
       </ul>
     </div>
   );
 };
-
 export default Todo;
